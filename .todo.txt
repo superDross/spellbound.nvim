@@ -8,3 +8,7 @@
 - Mappings
 	- map for `z=`
 	- mappings for going to next/previous mistake and executing `z=`
+
+- CI
+	- linter
+	- tests
