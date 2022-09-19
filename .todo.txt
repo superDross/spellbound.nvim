@@ -1,0 +1,10 @@
+- Autocommand configuration
+	- ability to disable git spelling activation
+	- ability to override files to activates spelling for in 
+
+- Demo
+	- add a gif demonstrating functionality
+
+- Mappings
+	- map for `z=`
+	- mappings for going to next/previous mistake and executing `z=`
