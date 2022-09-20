@@ -8,7 +8,7 @@ local config = require('spellbound.config')
 local M = {}
 
 
-local function setup_mappings(user_map)
+local function setup_mappings()
   local map_opts = { noremap = true, silent = true }
   -- spelling toggle key map
   vim.keymap.set(
@@ -43,21 +43,24 @@ local function setup_commands()
 end
 
 local function setup_autocommands()
+  local settings = vim.g.spellbound_settings
   local spelling_group = vim.api.nvim_create_augroup(
     'spelling',
     { clear = true }
   )
   vim.api.nvim_create_autocmd(
     { 'BufRead', 'BufNewFile' }, {
-    pattern = { '*.md', '*.txt', '*.rst' },
+    pattern = settings.autospell_filetypes,
     callback = function() spelling.activate_spelling() end,
     group = spelling_group,
   })
-  vim.api.nvim_create_autocmd('FileType', {
-    pattern  = { 'gitcommit', 'gitrebase' },
-    callback = function() spelling.activate_spelling() end,
-    group    = spelling_group,
-  })
+  if settings.autospell_gitfiles then
+    vim.api.nvim_create_autocmd('FileType', {
+      pattern  = { 'gitcommit', 'gitrebase' },
+      callback = function() spelling.activate_spelling() end,
+      group    = spelling_group,
+    })
+  end
 end
 
 function M.setup()

@@ -1,7 +1,3 @@
-- Autocommand configuration
-	- ability to disable git spelling activation
-	- ability to override files to activates spelling for in 
-
 - Demo
 	- add a gif demonstrating functionality
 
@@ -12,3 +8,6 @@
 - CI
 	- linter
 	- tests
+
+- Config
+	- stop using vim.g.spellbound_settings; is messy and reduces readability

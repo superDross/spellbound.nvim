@@ -38,6 +38,8 @@ end)
 - `mapping.fix_right` -- fix the nearest spelling mistake to the right of the cursor with the first suggestion (default: `Ctrl-l`)
 - `mapping.fix_left` -- fix the nearest spelling mistake to the left of the cursor with the first suggestion (default: `Ctrl-h`)
 - `language` -- language to check spelling against
+- `autospell_filetypes` -- filetypes that should have spelling activated when opened
+- `autospell_gitfiles` -- activate spelling for git commit and rebase buffers
 
 ### Defaults
 
@@ -50,6 +52,8 @@ vim.g.spellbound_settings = {
     fix_left   = '<C-h>',
   },
   language     = 'en_gb',
+  autospell_filetypes = { '*.txt', '*.md', '*.rst' },
+  autospell_gitfiles = true,
 }
 ```
 

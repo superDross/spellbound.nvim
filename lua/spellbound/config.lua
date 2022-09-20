@@ -11,6 +11,8 @@ local default_config = {
     toggle_map = '<C-s>'
   },
   language = 'en_gb',
+  autospell_filetypes = { '*.txt', '*.md', '*.rst' },
+  autospell_gitfiles = true,
 }
 
 local function _update_config(settings, key)
@@ -27,7 +29,8 @@ local function _update_config(settings, key)
 end
 
 function CONFIG.update_config()
-  -- update user settings with default values
+  -- update the default config with the users settings and override
+  -- the global spellbound_settings with it
   _update_config(vim.g.spellbound_settings, default_config)
 end
 
