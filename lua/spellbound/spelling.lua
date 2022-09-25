@@ -4,14 +4,14 @@
 
 SPELLING = {}
 
+-- set spelling language on and or off
 function SPELLING.activate_spelling()
-  -- set spelling language on and or off
   vim.cmd('setlocal spell spelllang=' .. vim.g.spellbound_settings.language)
   vim.cmd('hi SpellBad cterm=underline ctermfg=Red ctermbg=none')
 end
 
+-- toggle spelling on/off
 function SPELLING.spelling_toggle()
-  -- toggle spelling on/off
   if vim.o.spell == false then
     print('Spelling On')
     SPELLING.activate_spelling()

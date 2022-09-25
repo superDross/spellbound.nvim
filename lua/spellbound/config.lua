@@ -2,7 +2,7 @@
 -- provides default config and ability to override said defaults
 
 
-CONFIG = {}
+M = {}
 
 local default_config = {
   mappings = {
@@ -15,8 +15,8 @@ local default_config = {
   autospell_gitfiles = true,
 }
 
+-- iterate over user settings and update default config with user k/v
 local function _update_config(settings, key)
-  -- iterate over user settings and update default config with user k/v
   for k, v in pairs(settings) do
     if type(v) == 'table' then
       _update_config(v, key[k])
@@ -28,10 +28,10 @@ local function _update_config(settings, key)
   vim.g.spellbound_settings = default_config
 end
 
-function CONFIG.update_config()
-  -- update the default config with the users settings and override
-  -- the global spellbound_settings with it
+-- update the default config with the users settings and override
+-- the global spellbound_settings with it
+function M.update_config()
   _update_config(vim.g.spellbound_settings, default_config)
 end
 
-return CONFIG
+return M
