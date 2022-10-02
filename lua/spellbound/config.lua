@@ -2,7 +2,7 @@
 -- provides default config and ability to override said defaults
 
 
-M = {}
+local config = {}
 
 local default_config = {
   mappings = {
@@ -30,8 +30,8 @@ end
 
 -- update the default config with the users settings and override
 -- the global spellbound_settings with it
-function M.update_config()
+function config.update_config()
   _update_config(vim.g.spellbound_settings, default_config)
 end
 
-return M
+return config
