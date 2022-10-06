@@ -13,10 +13,10 @@ end
 -- toggle spelling on/off
 function spelling.spelling_toggle()
   if vim.o.spell == false then
-    print('Spelling On')
+    vim.notify('Spelling On')
     spelling.activate_spelling()
   else
-    print('Spelling Off')
+    vim.notify('Spelling Off')
     vim.cmd('setlocal nospell')
   end
 end
