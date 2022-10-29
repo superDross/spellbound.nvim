@@ -13,6 +13,7 @@ local default_config = {
   language = 'en_gb',
   autospell_filetypes = { '*.txt', '*.md', '*.rst' },
   autospell_gitfiles = true,
+  number_suggestions = 10,
 }
 
 -- iterate over user settings and update default config with user k/v

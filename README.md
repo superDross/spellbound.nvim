@@ -40,6 +40,7 @@ end)
 - `language` -- language to check spelling against
 - `autospell_filetypes` -- filetypes that should have spelling activated when opened
 - `autospell_gitfiles` -- activate spelling for git commit and rebase buffers
+- `number_suggestions` -- number of suggestions to display with `z=`
 
 ### Defaults
 
@@ -54,6 +55,7 @@ vim.g.spellbound_settings = {
   language     = 'en_gb',
   autospell_filetypes = { '*.txt', '*.md', '*.rst' },
   autospell_gitfiles = true,
+  number_suggestions = 10,
 }
 ```
 
