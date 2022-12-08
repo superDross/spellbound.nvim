@@ -17,12 +17,14 @@ local default_config = {
 }
 
 -- iterate over user settings and update default config with user k/v
-local function _update_config(settings, key)
+--- @param settings table: parsed user settings from g:spellbound_settings
+--- @param base_config table: default config which is to be updated
+local function _update_config(settings, base_config)
   for k, v in pairs(settings) do
     if type(v) == 'table' then
-      _update_config(v, key[k])
+      _update_config(v, base_config[k])
     else
-      key[k] = v
+      base_config[k] = v
     end
   end
   -- update settings
