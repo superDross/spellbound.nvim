@@ -6,7 +6,7 @@ Spelling commands and mappings for Neovim.
 
 - Automatically turn on spelling for certain file types
 - Add mapping and command for toggling spelling on/off
-- Add mappings for fixing spelling relative to the cursor
+- Add mappings for fixing spelling relative to the cursor in both normal and insert mode
 
 ## Installation and Requirements
 
@@ -41,6 +41,7 @@ end)
 - `autospell_filetypes` -- filetypes that should have spelling activated when opened
 - `autospell_gitfiles` -- activate spelling for git commit and rebase buffers
 - `number_suggestions` -- number of suggestions to display with `z=`
+- `return_to_position` -- return to the original cursor position after executing `fix_right`/`fix_left` mapping
 
 ### Defaults
 
@@ -48,7 +49,7 @@ end)
 -- default settings
 vim.g.spellbound_settings = {
   mappings = {
-    toggle_map = '<C-s>'
+    toggle_map = '<C-s>',
     fix_right  = '<C-l>',
     fix_left   = '<C-h>',
   },
@@ -56,6 +57,7 @@ vim.g.spellbound_settings = {
   autospell_filetypes = { '*.txt', '*.md', '*.rst' },
   autospell_gitfiles = true,
   number_suggestions = 10,
+  return_to_position = false,
 }
 ```
 

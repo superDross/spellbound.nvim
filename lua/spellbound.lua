@@ -17,20 +17,22 @@ local function setup_mappings()
     function() spelling.spelling_toggle() end,
     map_opts
   )
-  -- fix right most spelling error with first spelling suggestion
-  vim.keymap.set(
-    'n',
-    vim.g.spellbound_settings.mappings.fix_right,
-    ']s1z=',
-    map_opts
-  )
-  -- fix left most spelling error with first spelling suggestion
-  vim.keymap.set(
-    'n',
-    vim.g.spellbound_settings.mappings.fix_left,
-    '[s1z=',
-    map_opts
-  )
+  for _, mode in ipairs({'i', 'n'}) do
+    -- fix right most spelling error with first spelling suggestion
+    vim.keymap.set(
+      mode,
+      vim.g.spellbound_settings.mappings.fix_right,
+      function() spelling.fix_rightmost_spelling() end,
+      map_opts
+    )
+    -- fix left most spelling error with first spelling suggestion
+    vim.keymap.set(
+      mode,
+      vim.g.spellbound_settings.mappings.fix_left,
+      function() spelling.fix_leftmost_spelling() end,
+      map_opts
+    )
+  end
 end
 
 local function setup_commands()
