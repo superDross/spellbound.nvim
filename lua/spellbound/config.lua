@@ -35,7 +35,11 @@ end
 -- update the default config with the users settings and override
 -- the global spellbound_settings with it
 function config.update_config()
-  _update_config(vim.g.spellbound_settings, default_config)
+  if vim.g.spellbound_settings then
+    _update_config(vim.g.spellbound_settings, default_config)
+  else
+    vim.g.spellbound_settings = default_config
+  end
 end
 
 return config
