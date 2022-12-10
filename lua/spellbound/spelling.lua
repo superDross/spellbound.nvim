@@ -27,6 +27,9 @@ end
 -- correction if `g:return_to_position` is set as true.
 --- @param direction string: accepts 'left'/'right' to fix spelling in the given direction
 local function fix_spelling_error(direction)
+  if vim.o.spell == false then
+    error('You must toggle spelling on before fixing spelling errors')
+  end
   local direction_map = { left = '[s1z=', right = ']s1z=' }
   if direction_map[direction] == nil then
     error("Arg 'direction' must be either 'left' or 'right'")
