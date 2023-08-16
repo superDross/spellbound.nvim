@@ -7,7 +7,6 @@ local spelling = {}
 -- set spelling language on and or off
 function spelling.activate_spelling()
   vim.cmd('setlocal spell spelllang=' .. vim.g.spellbound_settings.language)
-  vim.cmd('hi SpellBad cterm=underline ctermfg=Red ctermbg=none')
   vim.cmd('set spellsuggest=best,' .. vim.g.spellbound_settings.number_suggestions)
 end
 
