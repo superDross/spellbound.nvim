@@ -21,6 +21,32 @@ function spelling.spelling_toggle()
   end
 end
 
+-- return the current view of the cursor with the current line length
+local function save_custom_view()
+  local view = vim.fn.winsaveview()
+  view['line_length'] = vim.fn.col('$')
+  return view
+end
+
+-- return to the original cursor position prior to the spell adjustment according
+-- to the direction of the spell correction and line length changes
+--- @param cmd string: the command to execute to fix the spelling
+--- @param direction string: accepts 'left'/'right' to fix spelling in the given direction
+local function return_to_position_view(cmd, direction)
+  local before = save_custom_view()
+  vim.cmd(cmd)
+  local after = save_custom_view()
+
+  if (before.lnum == after.lnum) and
+      (before.line_length ~= after.line_length) and
+      (direction == 'left')
+  then
+    before['col'] = before['col'] + (after['line_length'] - before['line_length'])
+  end
+
+  return before
+end
+
 -- Fix spelling error closest to the left/right of the cursor.
 -- Will return to the original cursor position prior to the spell
 -- correction if `g:return_to_position` is set as true.
@@ -35,8 +61,7 @@ local function fix_spelling_error(direction)
   end
   local cmd = 'norm ' .. direction_map[direction]
   if vim.g.spellbound_settings.return_to_position then
-    local view = vim.fn.winsaveview()
-    vim.cmd(cmd)
+    local view = return_to_position_view(cmd, direction)
     vim.fn.winrestview(view)
   else
     vim.cmd(cmd)
