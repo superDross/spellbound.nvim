@@ -15,6 +15,11 @@ local default_config = {
   autospell_gitfiles = true,
   number_suggestions = 10,
   return_to_position = false,
+  highlight = {
+    bg_colour = 'lightgreen',
+    fg_colour = 'black',
+    timer = 500,
+  }
 }
 
 -- iterate over user settings and update default config with user k/v
