@@ -42,6 +42,9 @@ end)
 - `autospell_gitfiles` -- activate spelling for git commit and rebase buffers
 - `number_suggestions` -- number of suggestions to display with `z=`
 - `return_to_position` -- return to the original cursor position after executing `fix_right`/`fix_left` mapping
+- `highlight.bg_colour` -- background colour of the highlight (default: `lightgreen`)
+- `highlight.fg_colour` -- foreground colour of the highlight (default: `black`)
+- `highlight.timer` -- number of microseconds in which the highlight will flash for (default: 500)
 
 ### Defaults
 
