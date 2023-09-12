@@ -9,13 +9,10 @@ function spelling.activate_spelling()
   vim.cmd('setlocal spell spelllang=' .. vim.g.spellbound_settings.language)
   vim.cmd('set spellsuggest=best,' .. vim.g.spellbound_settings.number_suggestions)
   local hl_cfg = vim.g.spellbound_settings.highlight
-  vim.cmd(
-    'highlight SpellBoundFixHighlight' ..
-    ' ctermbg=' .. hl_cfg.bg_colour ..
-    ' guibg=' .. hl_cfg.bg_colour ..
-    ' ctermfg=' .. hl_cfg.fg_colour ..
-    ' guifg=' .. hl_cfg.fg_colour
-  )
+  vim.api.nvim_set_hl(0, 'SpellBoundFixHighlight', {
+    bg = hl_cfg.bg_colour,
+    fg = hl_cfg.fg_colour,
+  })
 end
 
 -- toggle spelling on/off
