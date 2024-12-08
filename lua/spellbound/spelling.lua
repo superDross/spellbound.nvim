@@ -8,6 +8,7 @@ local spelling = {}
 function spelling.activate_spelling()
   vim.cmd('setlocal spell spelllang=' .. vim.g.spellbound_settings.language)
   vim.cmd('set spellsuggest=best,' .. vim.g.spellbound_settings.number_suggestions)
+  vim.cmd('set spelloptions=camel,noplainbuffer')
   local hl_cfg = vim.g.spellbound_settings.highlight
   vim.api.nvim_set_hl(0, 'SpellBoundFixHighlight', {
     bg = hl_cfg.bg_colour,
